@@ -13,7 +13,7 @@ app.use('/node_modules', express.static('./node_modules'))
 app.use(bodyParser.urlencoded({
     extended: false
 }))
-//reg添加
+
 //使用路由
 app.use(router);
 
