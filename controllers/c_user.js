@@ -33,6 +33,8 @@ const handleSignin = (req, res) => {
                 message: '密码错误'
             });
         }
+        //保存正确的用户信息
+        req.session.user = data[0];
         res.send({
             code: 200,
             message: '可以跳转了'
@@ -55,5 +57,14 @@ const handleSignin = (req, res) => {
     // //再验证密码
     // //最后跳转话题列表页
 }
+
+//处理用户推出的请求
+const handleSignout = (req, res) => {
+    // 清除session
+    delete req.session.user;
+    // 跳转到登录页
+    res.redirect('/signin');
+}
 exports.showSignin = showSignin;
 exports.handleSignin = handleSignin;
+exports.handleSignout = handleSignout;
